@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% extends "header.html" %}
+
+{% block body %}
+<body>
+    <div class = "container justify-content-center">
+    <!--
+        <table class="text-end " style="margin-left: auto; margin-right: auto;">
+
+            <tr>
+                <td><label for="inputUsername" class="col-form-label " >Username:&nbsp</label></td>
+                <td><input type="text" id="inputUsername" name="username" value= "{{request.form.username}}" class="form-control" aria-describedby="usernameHelpInline"></td>
+            </tr>
+            <tr>
+                <td><label for="inputPassword1" class="col-form-label" >Password:&nbsp</label></td>
+                <td><input type="password" id="inputPassword1" name="username" value="{{request.form.password}}" class="form-control" aria-describedby="password1HelpInline"></td>
+            </tr>
+
+        </table>
+
+        
+        <ul class = " nav justify-content-center">
+            <div class="btn-group" role="group" aria-label="Basic example" style="margin: 10px;">
+                <button type="button" class="btn btn-primary" >Back</button>
+                <button type="submit" class="btn btn-primary" >Login</button>
+                <button type="button" class="btn btn-primary" >Help</button>
+            </div>
+        </ul>
+    -->
+        <form action="" method="POST" name="Login-Form" class="row g-2 justify-content-center" >
+            <div class="col-auto">
+                <label for="inputUsernameL" class="form-lable">Username</label> 
+                <input type="text" class="form-control " placeholder="Username" name="username"
+                value="{{request.form.username}}">
+            </div>
+            <div class="col-auto">
+                <label for="inputPassword1L" class="form-lable">Password</label>
+                <input type="password" class="form-control " placeholder="Password" name="password"
+                value="{{request.form.password}}">
+            </div>
+            <div class="row g-2">
+                <div class="d-grid gap-2 col-3 mx-auto">
+                    <input type="submit" class="btn btn-primary" value="Login" >
+                    <input type="btn" class="btn btn-primary"onclick="location.href='/'" value="Back" >
+                    
+                </div>
+            </div>
+        </form>
+        {% if error %}
+            <p class="error"><strong>Error:</strong>{{error}}</p>
+        {% endif %}
+    </div>
+</body>
+{% endblock %}

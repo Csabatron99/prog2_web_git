@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+{% extends "header.html" %}
+
+{% block body %}
+<div class="d-flex align-items-start">
+    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+      <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Iesiri</button>
+      <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
+      <button class="nav-link" id="v-pills-tutorials-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tutorials" type="button" role="tab" aria-controls="v-pills-tutorials" aria-selected="false">Tutorials</button>
+      <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="v-pills-tutorials" aria-selected="false"onclick="location.href='/'">Back</button>
+    </div>
+    <div class="tab-content" id="v-pills-tabContent">
+        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+            <div class="btn-group" role="group", aria-label="A">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Add" href="#" value="Add"> Add </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modific" href="#" value="Modific"> Modific </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Delete" href="#" value="Delete"> Delete </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Search" href="#" value="Search"> Search </button>
+                <button type="button" class="btn btn-primary"  value="Refresh"> Refresh </button>
+            </div>
+            <div class="container-fluid">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        {% for header in headings %}
+                        <th scope="col">{{ header }}</th>
+                        {% endfor %}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in data %}
+                        <tr>
+                            {% for cell in row %}
+                                <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="btn-group" role="group", aria-label="A">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Add" href="#" value="Add"> Add </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modific" href="#" value="Modific"> Modific </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Delete" href="#" value="Delete"> Delete </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Search" href="#" value="Search"> Search </button>
+            </div>
+            <div class="container-fluid">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        {% for header in headings %}
+                        <th scope="col">{{ header }}</th>
+                        {% endfor %}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in data %}
+                        <tr>
+                            {% for cell in row %}
+                                <td>{{ cell }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+        <div class="tab-pane fade" id="v-pills-tutorials" role="tabpanel" aria-labelledby="v-pills-tutorials-tab">
+            {% for t in TOPIC_DICT["Basics"] %}
+                <li><a href="{{t[1]}}">{{t[0]}}</a></li>
+            {% endfor %}
+        </div>
+        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">...</div>
+    </div>
+</div>
+<div class="modal fade" id="Add" tabindex="-1" aria-labelledby="IesireAddModal" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Add</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="/c_p/" method="POST" name="C_P_Form" class=" row g-2 needs-validation">
+                    <div class="row g-2 justify-content-center">
+                        <div class="col-md-3">
+                            <label for="inputLocation" class="form-lable">Location</label> 
+                            <input type="text" id="inputLocation" class="form-control" placeholder="Location" >
+                        </div>
+                        <div class="col-md-3">
+                            <label for="inputCodClient" class="form-lable">Cod Client</label> 
+                            <input type="text" id="inputCodClient" class="form-control" placeholder="Cod">
+                            
+                        </div>
+                        <div class="col-md-3">
+                            <label for="inputCleint" class="form-lable">Client</label> 
+                            <input type="text" class="form-control" id="inputClient" placeholder="Client">
+                        </div>
+                    </div>
+                    <div class="row g-2 justify-content-center">
+                        <div class="col-md-5">
+                            <label for="inputDate" class="form-lable">Date</label> 
+                            <input type="text" id="inputDate" class="form-control" placeholder="Start Date" >
+                            
+                        </div>
+                        <div class="col-md-5">
+                            <label for="inputDateEnd" class="form-lable">Date End</label> 
+                            <input type="text" id="inputDateEnd" class="form-control" placeholder="End Date">
+                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="Modific" tabindex="-1" aria-labelledby="IesireModificModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Help about registration</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>The company E-mail is going to be generated from the username</p>
+                <p>The password need to contain one Uppercase letter and one number and be a minimum lenght of 8</p>
+                <p>The RegistrationCode is provided via the admin please contact with him. </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="Delete" tabindex="-1" aria-labelledby="IesireDeleteModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Help about registration</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>The company E-mail is going to be generated from the username</p>
+                <p>The password need to contain one Uppercase letter and one number and be a minimum lenght of 8</p>
+                <p>The RegistrationCode is provided via the admin please contact with him. </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<form action="/c_p/" method="POST" name="C_P_Form" class=" row g-2 needs-validation">
+    
+</form>
+
+<!--
+    <div class="row g-2 justify-content-center">
+        <div class="col-md-3">
+            <label for="inputNRDoc" class="form-lable">Nr.Doc</label> 
+            <input type="text" id="inputNRDoc" class="form-control" placeholder="Nr.Doc" value= {{form.tip.data}}>
+            
+        </div>
+        <div class="col-md-3">
+            <label for="inputCod" class="form-lable">Cod</label> 
+            <input type="text" id="inputCod" class="form-control" placeholder="Cod">
+            
+        </div>
+        <div class="col-md-4">
+            <label for="inputUsername" class="form-lable">Username</label> 
+            <div class="input-group">
+                <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                
+                <span class="input-group-text" id="basic-addon2">@tikvahome.ro</span>
+
+                
+            </div>
+        </div>
+    </div>
+    <div class="row g-2 justify-content-center">
+        <div class="col-md-5">
+            <label for="inputEmail1" class="form-lable">Email</label>
+            <input type="email" id="inputEmail1" class="form-control" placeholder="E-Mail">
+            
+        </div>
+        <div class="col-md-5">
+            <label for="inputEmail2" class="form-lable">Type it again please</label>
+            <input type="email" id="inputEmail2" class="form-control" placeholder="E-Mail Again">
+            
+        </div>
+    </div>
+    <div class="row g-2 justify-content-center">
+        <div class="col-md-5">
+            <label for="inputPhoneNumber1" class="form-lable">Phone Number For work</label>
+            <input type="text" id="inputPhoneNumber1" class="form-control" placeholder="+40712345678">
+            
+        </div>                                                                         
+        <div class="col-md-5">
+            <label for="inputPhoneNumber2" class="form-lable">Private Phone Number</label>
+            <input type="text" id="inputPhoneNumber2" class="form-control" placeholder="+40712345678">
+            
+        </div>
+    </div>
+    <div class="row g-2 justify-content-center">
+        <div class="col-md-5">
+            <label for="inputLocation" class="form-lable">Location (City) </label>
+            <select class="form-select" aria-label="inputLocation" id="inputLocation">
+                
+                <option selected>Select one location.</option>
+                <option value=1>Gheorgheni (Gyergyószentmiklós)</option>
+                <option value=2>Mercurea Ciuc (Csíkszereda)</option>
+            </select>
+            
+        </div>                                                                         
+        <div class="col-md-5">
+            <label for="inputRole" class="form-lable">Role</label>
+            <select class="form-select" aria-label="inputRole" id="inputRole">
+                
+                <option selected>Select one role.</option>
+                <option value=1>IT</option>
+                <option value=2>Broker</option>
+                <option value=3>Assistant Manager</option>
+                <option value=4>Consulant Imobiliaar</option>
+            </select>
+            
+        </div>
+    </div>
+    <div class="row g-2 justify-content-center">
+        <div class="col-md-5">
+            <label for="inputPassword1" class="form-lable">Password</label>
+            <input type="password" id="inputPassword1" class="form-control" placeholder="Password">
+            
+        </div>
+        <div class="col-md-5">
+            <label for="inputPassword2" class="form-lable">Type it again please</label>
+            <input type="password" id="inputPassword2" class="form-control" placeholder="Confirm Password">
+            
+        </div>
+    </div>
+    <div class="row g-2 justify-content-center">
+        <div class="col-md-10">
+            <label for="inputRegistrationCode" class="form-lable">The code what the admin provided for you</label>
+            <input type="password" id="inputRegistrationCode" class="form-control" placeholder="Registration Code">
+            
+        </div>
+    </div>
+    <div class="row g-2 justify-content-center">
+        <div class="d-grid gap-2 col-2 mx-auto">
+            <input type="submit" class="btn btn-primary" value="Register" >
+            <input type="btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#HelpModal" href="#" value="Help" >
+            <input type="btn" class="btn btn-primary" value="Back" >
+        </div>
+    </div>-->
+{% if error %}
+    <p class="error"><strong>Error:</strong>{{error}}</p>
+{% endif %}
+
+{% endblock %}

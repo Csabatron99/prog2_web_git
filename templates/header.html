@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <head>
+        <meta charset="utf-8">
+        <title>TikvaHome CRM V0.1B</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+        <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    </head>
+<header>
+
+<body>
+
+    <div class="container-fluid" style="min-height: 100%;">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/">
+                <img style="max-width: 120px; margin-left: auto; margin-right: auto; display: block;" src="{{ url_for('static', filename='images/mainlogo.png')}}">
+            </a>
+        </div>
+        {% with messages = get_flashed_messages() %}
+
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
+
+        {% endwith %}
+        
+        {% block body %}{% endblock %}
+    </div>
+
+    <script src="//code.jquery.com/jquery-3.6.0.min.js">
+    </script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js') }}">
+    </script>
+    
+
+</body>
+
+</header>

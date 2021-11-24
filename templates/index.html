@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="hu">
+  {% extends "header.html" %}
+
+  {% block body %}
+
+  <header>
+
+    <div class="navbar-header">
+      <ul class="nav justify-content-center">
+        <div class="btn-group" role="group" aria-label="Basic example" style="margin: 10px;">
+          <button type="button" class="btn btn-primary" onclick="location.href='/login/'" >Login</button>
+          <button type="button" class="btn btn-primary" onclick="location.href= '/register/'" >Register</button>
+          <button type="button" class="btn btn-primary" onclick="location.href='/c_p/'" >About</button>
+        </div>
+      </ul>
+    </div>
+
+    <!-- 
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+            <img style="max-width: 120px; margin-left: auto; margin-right: auto; display: block;" src="{{ url_for('static', filename='images/mainlogo.png')}}">
+        </a>
+        <ul class="nav justify-content-center">
+            <div class="btn-group" role="group" aria-label="Basic example" style="margin: 10px;">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#LoginModal" href="#">Login</button>
+                <button type="button" class="btn btn-primary"data-bs-toggle="modal" data-bs-target="#RegisterModal" href="#">Register</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='/about/'">About</button>
+            </div>
+        </ul>
+    </div>
+    <div class="modal fade" id="LoginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1">
+                    </div>
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                  </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Login</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal fade" id="RegisterModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Email address</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="{{request.form.email}}">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputUsername" class="form-label">Username</label>
+                      <input type="text" class="form-control" id="exampleInputUsername" name="username" value="{{request.form.username}}">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label">Password</label>
+                      <input type="password" class="form-control" id="exampleInputPassword1" name="password1" value="{{request.form.password1}}">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword2" class="form-label">Password2</label>
+                        <input type="password" class="form-control" id="exampleInputPassword2" name="password2" value="{{request.form.password2}}">
+                        <div id="passwordHelp" class="form-text">Both of the password is need to be the same!</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputRegistrationCode" class="form-label">Registration Code</label>
+                        <input type="password" class="form-control" id="exampleInputPassword2" name="regcode" value="{{request.form.regcode}}">
+                        <div id="RegCodeHelp" class="form-text">The Code you got from the admin to register in</p>
+                    </div>
+                    !--
+                    <div class="mb-3 form-check">
+                      <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                      <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                    </div>
+                    --
+                </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" value="Login">Login</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+
+  </header>
+
+
+
+
+
+  <body>
+      <script src="//code.jquery.com/jquery-3.6.0.min.js">
+      </script>
+      <script type="text/javascript" src="{{url_for('static', filename='js/bootstrap.min.js') }}">
+      </script>
+      
+
+  </body>
+  {% endblock %}
+</html>

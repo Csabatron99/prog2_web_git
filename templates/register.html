@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+{% extends "header.html" %}
+
+{% block body %}
+
+<div class = "container justify-content-center">
+<!--
+    <table class="text-end " style="margin-left: auto; margin-right: auto;">
+
+        <tr>
+            <td><label for="inputUsername" class="col-form-label " >Username:&nbsp</label></td>
+            <td><input type="text" id="inputUsername" class="form-control" aria-describedby="usernameHelpInline"></td>
+        </tr>
+        <tr>
+            <td><label for="inputEmail" class="col-form-label" >E-Mail:&nbsp</label></td>
+            <td><input type="text" id="inputEmail" class="form-control" aria-describedby="emailHelpInline"></td>
+        </tr>
+        <tr>
+            <td><label for="inputPassword1" class="col-form-label" >Password:&nbsp</label></td>
+            <td><input type="password" id="inputPassword1" class="form-control" aria-describedby="password1HelpInline"></td>
+        </tr>
+        <tr>
+            <td><label for="inputPassword" class="col-form-label" >Password Again:&nbsp</label></td>
+            <td><input type="password" id="inputPassword2" class="form-control" aria-describedby="password2HelpInline"></td>
+        </tr>
+        <tr>
+            <td><label for="InputRegistrationCode" class="col-form-label" >RegistrationCode:&nbsp</label></td>
+            <td><input type="password" id="inputRegistrationCode" class="form-control" aria-describedby="registrationCodeHelpInline"></td>
+        </tr>
+
+    </table>
+-->
+    {% from "_formhelpers.html" import render_field %}
+    <form action="/register/" method="POST" name="Register-Form" class="row g-2 needs-validation">
+        <div class="row g-2 justify-content-center">
+            <div class="col-md-3">
+                <label for="inputFName" class="form-lable">First Name</label> 
+                <!--<input type="text" id="inputFName" class="form-control" placeholder="First Name" value= {{form.fname.data}}>-->
+                {{ render_field(form.fname)}}
+            </div>
+            <div class="col-md-3">
+                <label for="inputLName" class="form-lable">Last Name</label> 
+                <!--<input type="text" id="inputLName" class="form-control" placeholder="Last Name">-->
+                {{ render_field(form.lname)}}
+            </div>
+            <div class="col-md-4">
+                <label for="inputUsername" class="form-lable">Username</label> 
+                <div class="input-group">
+                    <!--<input type="text" class="form-control" id="inputUsername" placeholder="Username">
+                    
+                    <span class="input-group-text" id="basic-addon2">@tikvahome.ro</span>-->
+
+                    {{ render_field(form.username)}}
+                </div>
+            </div>
+        </div>
+        <div class="row g-2 justify-content-center">
+            <div class="col-md-5">
+                <label for="inputEmail1" class="form-lable">Email</label>
+                <!--<input type="email" id="inputEmail1" class="form-control" placeholder="E-Mail">-->
+                {{ render_field(form.email1)}}
+            </div>
+            <div class="col-md-5">
+                <label for="inputEmail2" class="form-lable">Type it again please</label>
+                <!--<input type="email" id="inputEmail2" class="form-control" placeholder="E-Mail Again">-->
+                {{ render_field(form.email2)}}
+            </div>
+        </div>
+        <div class="row g-2 justify-content-center">
+            <div class="col-md-5">
+                <label for="inputPhoneNumber1" class="form-lable">Phone Number For work</label>
+                <!--<input type="text" id="inputPhoneNumber1" class="form-control" placeholder="+40712345678">-->
+                {{ render_field(form.phoneW)}}
+            </div>                                                                         
+            <div class="col-md-5">
+                <label for="inputPhoneNumber2" class="form-lable">Private Phone Number</label>
+                <!--<input type="text" id="inputPhoneNumber2" class="form-control" placeholder="+40712345678">-->
+                {{ render_field(form.phoneP)}}
+            </div>
+        </div>
+        <div class="row g-2 justify-content-center">
+            <div class="col-md-5">
+                <label for="inputLocation" class="form-lable">Location (City) </label>
+                <!--<select class="form-select" aria-label="inputLocation" id="inputLocation">
+                    
+                    <option selected>Select one location.</option>
+                    <option value=1>Gheorgheni (Gyergyószentmiklós)</option>
+                    <option value=2>Mercurea Ciuc (Csíkszereda)</option>
+                </select>-->
+                {{ render_field(form.location)}}
+            </div>                                                                         
+            <div class="col-md-5">
+                <label for="inputRole" class="form-lable">Role</label>
+                <!--<select class="form-select" aria-label="inputRole" id="inputRole">
+                    
+                    <option selected>Select one role.</option>
+                    <option value=1>IT</option>
+                    <option value=2>Broker</option>
+                    <option value=3>Assistant Manager</option>
+                    <option value=4>Consulant Imobiliaar</option>
+                </select>-->
+                {{ render_field(form.role)}}
+            </div>
+        </div>
+        <div class="row g-2 justify-content-center">
+            <div class="col-md-5">
+                <label for="inputPassword1" class="form-lable">Password</label>
+                <!--<input type="password" id="inputPassword1" class="form-control" placeholder="Password">-->
+                {{ render_field(form.password1)}}
+            </div>
+            <div class="col-md-5">
+                <label for="inputPassword2" class="form-lable">Type it again please</label>
+                <!--<input type="password" id="inputPassword2" class="form-control" placeholder="Confirm Password">-->
+                {{ render_field(form.password2)}}
+            </div>
+        </div>
+        <div class="row g-2 justify-content-center">
+            <div class="col-md-10">
+                <label for="inputRegistrationCode" class="form-lable">The code what the admin provided for you</label>
+                <!--<input type="password" id="inputRegistrationCode" class="form-control" placeholder="Registration Code">-->
+                {{ render_field(form.regcode)}}
+            </div>
+        </div>
+        <div class="row g-2 justify-content-center">
+            <div class="d-grid gap-2 col-2 mx-auto">
+                <input type="submit" class="btn btn-primary" value="Register" >
+                <input type="btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#HelpModal" href="#" value="Help" >
+                <input type="btn" class="btn btn-primary" value="Back" >
+            </div>
+        </div>
+    </form>
+{% if error %}
+    <p class="error"><strong>Error:</strong>{{error}}</p>
+{% endif %}
+<!--
+    <ul class = " nav justify-content-center">
+        <div class="btn-group" role="group" aria-label="Basic example" style="margin: 10px;">
+            <button type="button" class="btn btn-primary" >Back</button>
+            <button type="button" class="btn btn-primary" >Register</button>
+            <button type="button" class="btn btn-primary"   data-bs-toggle="modal" data-bs-target="#HelpModal" href="#" >Help</button>
+        </div>
+    </ul>
+-->
+</div>
+
+<div class="modal fade" id="HelpModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Help about registration</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p>The company E-mail is going to be generated from the username</p>
+            <p>The password need to contain one Uppercase letter and one number and be a minimum lenght of 8</p>
+            <p>The RegistrationCode is provided via the admin please contact with him. </p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!--    
+    <div class="row  g-3 align-items-center  justify-content-end">
+        <div class="col-auto">
+        <label for="inputUsername" class="col-form-label" >Username</label><br>
+        
+        
+        
+        
+        </div>
+        <div class="col-auto">
+        <input type="text" id="inputUsername" class="form-control" aria-describedby="usernameHelpInline">
+        </div>
+    </div>    
+
+    <div class="row g-3 align-items-center ">
+        <div class="col-auto">
+            <label for="inputEmail" class="col-form-label" >E-Mail</label><br>
+        </div>
+        <div class="col-auto">
+            <input type="email" id="inputEmail" class="form-control" aria-describedby="emailHelpInline">
+        </div>
+    </div>
+    <div class="row g-3 align-items-center ">
+        <div class="col-auto">
+            <label for="inputPassword1" class="col-form-label" >Password</label>
+        </div>
+        <div class="col-auto">
+            <input type="password" id="inputPassword1" class="form-control" aria-describedby="password1HelpInline">
+        </div>
+    </div>
+    <div class="row g-3 align-items-center ">
+        <div class="col-auto">
+            <label for="inputPassword2" class="col-form-label" >Password Again</label>
+        </div>
+        <div class="col-auto">
+            <input type="password" id="inputPassword2" class="form-control" aria-describedby="password2HelpInline">
+        </div>
+    </div>
+    <div class="row g-3 align-items-center ">
+        <div class="col-auto">
+            <label for="InputRegistrationCode" class="col-form-label" >Registration Code</label>
+        </div>
+        <div class="col-auto">
+            <input type="password" id="InputRegistrationCode" class="form-control" aria-describedby="registrationCodeHelpInline">
+        </div>
+        <div class="col-auto">
+            <span id="registrationCodeHelpInline" class="form-text">
+               The Registration Code that the admin provided to you.
+            </span>
+            </div>
+    </div>
+    <ul class="row ">
+        <div class="col-auto" style="margin: 10px;">
+            <button type="button" class="btn btn-primary" >Login</button>
+        </div>
+    </ul>
+-->
+
+{% endblock %}
