@@ -4,68 +4,128 @@
 {% block body %}
 <div class="d-flex align-items-start">
     <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-      <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Iesiri</button>
-      <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile</button>
-      <button class="nav-link" id="v-pills-tutorials-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tutorials" type="button" role="tab" aria-controls="v-pills-tutorials" aria-selected="false">Tutorials</button>
-      <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="v-pills-tutorials" aria-selected="false"onclick="location.href='/'">Back</button>
+      <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Kuncsaft</button>
+      <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profil</button>
+      <!--<button class="nav-link" id="v-pills-tutorials-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tutorials" type="button" role="tab" aria-controls="v-pills-tutorials" aria-selected="false">Tutorials</button>-->
+      <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" type="button" role="tab" aria-controls="v-pills-tutorials" aria-selected="false"onclick="location.href='/logout'">Log Out</button>
     </div>
     <div class="tab-content" id="v-pills-tabContent">
         <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
             <div class="btn-group" role="group", aria-label="A">
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Add" href="#" value="Add"> Add </button>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modific" href="#" value="Modific"> Modific </button>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Delete" href="#" value="Delete"> Delete </button>
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Search" href="#" value="Search"> Search </button>
-                <button type="button" class="btn btn-primary"  value="Refresh"> Refresh </button>
+                 
             </div>
+            <a href="{{ url_for('c_p') }}"><button type="button" class="btn btn-primary">Refresh</button></a>
             <div class="container-fluid">
                 <table class="table table-striped">
                     <thead>
                     <tr>
-                        {% for header in headings %}
+                        {% for header in headings2 %}
                         <th scope="col">{{ header }}</th>
                         {% endfor %}
                     </tr>
                     </thead>
                     <tbody>
-                    {% for row in data %}
+                    {% for row in data2 %}
                         <tr>
-                            {% for cell in row %}
+                            <!--{% for cell in row %}
                                 <td>{{ cell }}</td>
-                            {% endfor %}
-                        </tr>
-                    {% endfor %}
-                    </tbody>
-                </table>
-            </div>
-            <div class="btn-group" role="group", aria-label="A">
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Add" href="#" value="Add"> Add </button>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modific" href="#" value="Modific"> Modific </button>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Delete" href="#" value="Delete"> Delete </button>
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Search" href="#" value="Search"> Search </button>
-            </div>
-            <div class="container-fluid">
-                <table class="table table-striped">
-                    <thead>
-                    <tr>
-                        {% for header in headings %}
-                        <th scope="col">{{ header }}</th>
-                        {% endfor %}
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {% for row in data %}
-                        <tr>
-                            {% for cell in row %}
-                                <td>{{ cell }}</td>
-                            {% endfor %}
+                            {% endfor %}-->
+                            <td>{{ row[0]}}</td>
+                            <td>{{ row[1].decode('UTF-8') }}</td>
+                            <td>{{ row[2].decode('UTF-8') }}</td>
+                            <td>{{ row[3]}}</td>
+                            <td>{{ row[4]}}</td>
+                            <td>{{ row[5].decode('UTF-8') }}</td>
+                            <td>{{ row[6].decode('UTF-8') }}</td>
+                            <td>{{ row[7].decode('UTF-8') }}</td>
+                            <td>{{ row[8].decode('UTF-8') }}</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
             </div>
         </div>
-        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">...</div>
+            
+        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+            <!--<div class="btn-group" role="group", aria-label="A">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Add" href="#" value="Add"> Add </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modifi" href="#" value="Modifi"> Modifi </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Delete" href="#" value="Delete"> Delete </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Search" href="#" value="Search"> Search </button>
+                
+            </div>-->
+            <div class="container-fluid">
+                <a>Current user:</a>
+            </div>
+            
+            <div class="container-fluid">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        {% for header in headings1 %}
+                        <th scope="col">{{ header }}</th>
+                        {% endfor %}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in data1 %}
+                        <tr>
+                            <!--{% for cell in row %}
+                                <td>{{ cell }}</td>
+                            {% endfor %}-->
+                            <td>{{ row[1].decode('UTF-8') }}</td>
+                            <td>{{ row[2].decode('UTF-8') }}</td>
+                            <td>{{ row[3].decode('UTF-8') }}</td>
+                            <td>{{ row[5].decode('UTF-8') }}</td>
+                            <td>{{ row[6].decode('UTF-8') }}</td>
+                            <td>{{ row[7].decode('UTF-8') }}</td>
+                            <td>{{ row[8].decode('UTF-8') }}</td>
+                            <td>{{ row[9].decode('UTF-8') }}</td>
+                            <td>{{ row[10].decode('UTF-8') }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!--<div class="btn-group" role="group", aria-label="A">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Add" href="#" value="Add"> Add </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Modific" href="#" value="Modific"> Modific </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Delete" href="#" value="Delete"> Delete </button>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#Search" href="#" value="Search"> Search </button>
+            </div>
+            <div class="container-fluid">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        {% for header in headings1 %}
+                        <th scope="col">{{ header }}</th>
+                        {% endfor %}
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for row in data1 %}
+                        <tr>
+                            <td>{{ row[0]}}</td>
+                            <td>{{ row[1].decode('UTF-8') }}</td>
+                            <td>{{ row[2].decode('UTF-8') }}</td>
+                            <td>{{ row[3].decode('UTF-8') }}</td>
+                            <td>{{ row[4].decode('UTF-8') }}</td>
+                            <td>{{ row[5].decode('UTF-8') }}</td>
+                            <td>{{ row[6].decode('UTF-8') }}</td>
+                            <td>{{ row[7].decode('UTF-8') }}</td>
+                            <td>{{ row[8].decode('UTF-8') }}</td>
+                            <td>{{ row[9].decode('UTF-8') }}</td>
+                            <td>{{ row[10].decode('UTF-8') }}</td>
+                            <td>{{ row[11].decode('UTF-8') }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>-->
         <div class="tab-pane fade" id="v-pills-tutorials" role="tabpanel" aria-labelledby="v-pills-tutorials-tab">
             {% for t in TOPIC_DICT["Basics"] %}
                 <li><a href="{{t[1]}}">{{t[0]}}</a></li>
@@ -82,43 +142,61 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form action="/c_p/" method="POST" name="C_P_Form" class=" row g-2 needs-validation">
+                {% from "_formhelpers.html" import render_field %}
+                <form action="/c_p/" method="POST" name="C_P_Form_ADD" class=" row g-2 needs-validation">
                     <div class="row g-2 justify-content-center">
                         <div class="col-md-3">
-                            <label for="inputLocation" class="form-lable">Location</label> 
-                            <input type="text" id="inputLocation" class="form-control" placeholder="Location" >
+                            <label for="inputVezetéknév" class="form-lable">Vezetéknév</label> 
+                            <!--<input type="text" id="inputVezetéknév" class="form-control" placeholder="Vezetéknév" >-->
+                            {{ render_field(formAdd.vnev) }}
                         </div>
                         <div class="col-md-3">
-                            <label for="inputCodClient" class="form-lable">Cod Client</label> 
-                            <input type="text" id="inputCodClient" class="form-control" placeholder="Cod">
-                            
+                            <label for="inputKeresztnév" class="form-lable">Keresztnév</label> 
+                            <!--<input type="text" id="inputKeresztnév" class="form-control" placeholder="Keresztnév">-->
+                            {{ render_field(formAdd.knev)}}
                         </div>
                         <div class="col-md-3">
-                            <label for="inputCleint" class="form-lable">Client</label> 
-                            <input type="text" class="form-control" id="inputClient" placeholder="Client">
+                            <label for="inputSZSZ" class="form-lable">Személyi szám</label> 
+                            <!--<input type="number" class="form-control" id="inputSZSZ" placeholder="Személyi szám">-->
+                            {{ render_field(formAdd.szsz)}}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="inputSZE" class="form-lable">Születési év</label> 
+                            <!--<input type="date" class="form-control" id="inputSZE" placeholder="Születési év">-->
+                            {{ render_field(formAdd.sze)}}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="inputLakhely" class="form-lable">Lakhely</label> 
+                            <!--<input type="text" class="form-control" id="inputLakhely" placeholder="Város">-->
+                            {{ render_field(formAdd.lak)}}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="inputTelefon" class="form-lable">Telefon</label> 
+                            <!--<input type="text" class="form-control" id="inputTelefon" placeholder="+36203606647">-->
+                            {{ render_field(formAdd.tel)}}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="inputEmail" class="form-lable">Email</label> 
+                            <!--<input type="email" class="form-control" id="inputEmail" placeholder="example@example.com">-->
+                            {{ render_field(formAdd.email)}}
+                        </div>
+                        <div class="col-md-3">
+                            <label for="inputCSA" class="form-lable">Csaladi Allapot</label> 
+                            <!--<input type="text" class="form-control" id="inputCSA" placeholder="Csaladi Allapot">-->
+                            {{ render_field(formAdd.csa)}}
                         </div>
                     </div>
-                    <div class="row g-2 justify-content-center">
-                        <div class="col-md-5">
-                            <label for="inputDate" class="form-lable">Date</label> 
-                            <input type="text" id="inputDate" class="form-control" placeholder="Start Date" >
-                            
-                        </div>
-                        <div class="col-md-5">
-                            <label for="inputDateEnd" class="form-lable">Date End</label> 
-                            <input type="text" id="inputDateEnd" class="form-control" placeholder="End Date">
-                            
-                        </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" value="Add_bt" name="Add_bt"> Add </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
+            
         </div>
     </div>
 </div>
-<div class="modal fade" id="Modific" tabindex="-1" aria-labelledby="IesireModificModal" aria-hidden="true">
+<div class="modal fade" id="Modifi" tabindex="-1" aria-labelledby="IesireModifiModal" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -140,21 +218,57 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Help about registration</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p>The company E-mail is going to be generated from the username</p>
-                <p>The password need to contain one Uppercase letter and one number and be a minimum lenght of 8</p>
-                <p>The RegistrationCode is provided via the admin please contact with him. </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                {% from "_formhelpers.html" import render_field %}
+                <form action="/c_p/" method="POST" name="C_P_Form_REM" class=" needs-validation">
+                    <div class="row g-2 justify-content-left">
+                        <div class="col-md-3">
+                            <label for="inputId" class="form-lable">ID</label> 
+                            <!--<input type="text" class="form-control" id="inputCSA" placeholder="Csaladi Allapot">-->
+                            {{ render_field(formRem.id)}}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary" value="Remove_bt" name="Remove_bt"> Remove </button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
-<form action="/c_p/" method="POST" name="C_P_Form" class=" row g-2 needs-validation">
+<div class="modal fade" id="Search" tabindex="-1" aria-labelledby="IesireSearchModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Record</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                {% from "_formhelpers.html" import render_field %}
+                <form action="/c_p/" method="POST" name="C_P_Form_SEARCH" class=" row g-2 needs-validation">
+                    <div class="row g-2 justify-content-center">
+                        
+                        <div class="col-md-3">
+                            <label for="inputSZSZ" class="form-lable">Személyi szám</label> 
+                            <!--<input type="number" class="form-control" id="inputSZSZ" placeholder="Személyi szám">-->
+                            {{ render_field(formSearch.Sszsz)}}
+                        </div>
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary" value="Search_bt" name="Search_bt"> Search </button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<form action="/c_p/" method="POST" name="C_P_Form_ADD" class=" row g-2 needs-validation">
     
 </form>
 
@@ -162,7 +276,7 @@
     <div class="row g-2 justify-content-center">
         <div class="col-md-3">
             <label for="inputNRDoc" class="form-lable">Nr.Doc</label> 
-            <input type="text" id="inputNRDoc" class="form-control" placeholder="Nr.Doc" value= {{form.tip.data}}>
+            <input type="text" id="inputNRDoc" class="form-control" placeholder="Nr.Doc" value= >
             
         </div>
         <div class="col-md-3">

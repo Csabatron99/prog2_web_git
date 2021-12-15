@@ -114,18 +114,17 @@
                 {{ render_field(form.password2)}}
             </div>
         </div>
-        <div class="row g-2 justify-content-center">
+        <!--<div class="row g-2 justify-content-center">
             <div class="col-md-10">
                 <label for="inputRegistrationCode" class="form-lable">The code what the admin provided for you</label>
-                <!--<input type="password" id="inputRegistrationCode" class="form-control" placeholder="Registration Code">-->
-                {{ render_field(form.regcode)}}
+                
             </div>
-        </div>
+        </div>-->
         <div class="row g-2 justify-content-center">
             <div class="d-grid gap-2 col-2 mx-auto">
                 <input type="submit" class="btn btn-primary" value="Register" >
                 <input type="btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#HelpModal" href="#" value="Help" >
-                <input type="btn" class="btn btn-primary" value="Back" >
+                <a class="btn btn-primary" href="{{ url_for('homepage') }}"><button type="button" class="btn btn-primary">Back</button></a>
             </div>
         </div>
     </form>
