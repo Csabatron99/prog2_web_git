@@ -122,10 +122,11 @@
         </div>-->
         <div class="row g-2 justify-content-center">
             <div class="d-grid gap-2 col-2 mx-auto">
-                <input type="submit" class="btn btn-primary" value="Register" >
+                <button type="submit" class="btn btn-primary" value="Register_bt" name="Register_bt" >Register</button>
                 <input type="btn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#HelpModal" href="#" value="Help" >
                 <a class="btn btn-primary" href="{{ url_for('homepage') }}"><button type="button" class="btn btn-primary">Back</button></a>
             </div>
+            
         </div>
     </form>
 {% if error %}

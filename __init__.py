@@ -49,9 +49,9 @@ class RegistrationForm(Form):
     
     phoneP = StringField('inputPhoneNumber2', [validators.DataRequired()])
     
-    location = StringField('inputLocation', [validators.NoneOf('Select one location.', message='Pease select one location')])
+    location = StringField('inputLocation', [validators.DataRequired()])
 
-    role = StringField('inputRole', [validators.NoneOf('Select one role.', message='Select one please.')])
+    role = StringField('inputRole', [validators.DataRequired()])
     
     password1 = PasswordField('inputPassword1', [validators.DataRequired(), validators.EqualTo('password2', message='Passwords must match')])
     
@@ -195,19 +195,21 @@ def login():
 @app.route('/register/', methods=["GET","POST"])
 def register():
     try:
-        form = RegistrationForm(request.form)
-        if request.method == "POST" and form.validate():
-            fnameR = form.fname.data
-            lnameR = form.lname.data
-            usernameR = form.username.data
-            emailR = form.email1.data
-            phoneWR = form.phoneW.data
-            phonePR = form.phoneP.data
-            locationR = form.location.data
-            roleR = form.role.data
-            passwordR = sha256_crypt.hash((str(form.password1.data)))
+        formreg = RegistrationForm(request.form)
+        if request.method == "POST" :
+            fnameR = formreg.fname.data
+            lnameR = formreg.lname.data
+            usernameR = formreg.username.data
+            emailR = formreg.email1.data
+            emailR2 = formreg.email2.data
+            if emailR.find("@") == -1 or emailR.find(".") == -1 or emailR2.find("@") == -1 or emailR2.find(".") == -1:
+                return render_template("register.html", form=formreg, error = "Invalid Email, or not matching")
+            phoneWR = formreg.phoneW.data
+            phonePR = formreg.phoneP.data
+            locationR = formreg.location.data
+            roleR = formreg.role.data
+            passwordR = sha256_crypt.hash((str(formreg.password1.data)))
             c1, conn1 = connection_db()
-            
             usernameR = usernameR.strip()
             cquerry = "SELECT * FROM `workers` WHERE `Username` = (%s)"
             cvalue = (usernameR,)
@@ -215,12 +217,10 @@ def register():
             c1.fetchall()
             a = c1.rowcount
             if int(a) > 0:
-                flash("This username is alredy used in the system")
-                return render_template("register.html", form=form)
+                return render_template("register.html", form=formreg, error = "Username is alredy taken")
             else: 
                 querri = "INSERT INTO workers (Prenume, Nume, Username, Password, Role, Telefon_1, Telefon_2, Email_1, Email_2, Location, Link_For_Contract) VALUES (%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                 values = (fnameR, lnameR, usernameR, passwordR, roleR, phoneWR, phonePR, usernameR+"@tikvahome.ro", emailR, locationR, "TEST" )
-                
                 c1.execute(querri,values)
                 conn1.commit() 
                 flash("Registration was succesfull. Please log in.")
@@ -230,7 +230,7 @@ def register():
                 session['logged_in'] = True
                 session['username'] = usernameR
                 return redirect(url_for('login'))
-        return render_template("register.html", form = form)
+        return render_template("register.html", form = formreg)
     except Exception as e:
         return render_template("500.html", error = e)
   
